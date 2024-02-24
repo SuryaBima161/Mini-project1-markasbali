@@ -6,37 +6,18 @@ import (
 	"os"
 )
 
-type DaftarBuku struct {
-	Kode_Buku      string
-	Judul_Buku     string
-	Pengarang      string
-	Penerbit       string
-	Jumlah_Halaman int
-	Tahun_Terbit   int
-}
-
-func listBuku() {
-	// var buku string
-}
-
-func editBuku() {
-
-}
-func deleteBuku() {
-
-}
-
 func main() {
 
 	chooseOrder := 0
-	fmt.Println("Order Food System")
+	fmt.Println("Daftar buku manajemen")
 	fmt.Println("================================================")
-	fmt.Println("choose your order :")
-	fmt.Println("1. tambah buku")
-	fmt.Println("2. view order")
-	fmt.Println("3. delete order")
-	fmt.Println("4. Out System")
-	fmt.Println("Enter your order")
+	fmt.Println("Silahkan Pilih :")
+	fmt.Println("1. Tambah Buku")
+	fmt.Println("2. Edit Buku")
+	fmt.Println("3. Delete Buku")
+	fmt.Println("4. List Buku")
+	fmt.Println("5. Out Program")
+	fmt.Println("Tekan pilihanmu")
 	_, err := fmt.Scanln(&chooseOrder)
 
 	if err != nil {
@@ -46,11 +27,11 @@ func main() {
 	if chooseOrder == 1 {
 		usecase.TambahBuku()
 	} else if chooseOrder == 2 {
-		editBuku()
+		usecase.EditBuku()
 	} else if chooseOrder == 3 {
-		deleteBuku()
+		usecase.DeleteBuku()
 	} else if chooseOrder == 4 {
-		listBuku()
+		usecase.ListBuku()
 	} else if chooseOrder == 5 {
 		os.Exit(0)
 	}

@@ -11,12 +11,10 @@ import (
 var listBook []models.DaftarBuku
 
 func TambahBuku() {
-	judulbuku := ""
-	pengarang := ""
-	penerbit := ""
 	jumlahhalaman := 0
 	tahunterbit := 0
 	inputUser := bufio.NewReader(os.Stdin)
+
 	fmt.Println("Tambah Kode Buku")
 	fmt.Print("Silahkan Tambah List Buku :")
 	kodebuku, err := inputUser.ReadString('\n')
@@ -24,38 +22,40 @@ func TambahBuku() {
 		fmt.Println("Error: ", err)
 		return
 	}
-	kodebuku = strings.Replace(kodebuku, "\n", " ", 1)
+	kodebuku = strings.TrimSpace(kodebuku)
+	fmt.Println(kodebuku)
 
 	fmt.Println("Tambah Judul Buku")
 	fmt.Print("Silahkan Tambah List Buku :")
-	judulbuku, err = inputUser.ReadString('\n')
+	judulbuku, err := inputUser.ReadString('\n')
 	if err != nil {
 		fmt.Println("Error: ", err)
 		return
 	}
-	judulbuku = strings.Replace(judulbuku, "\n", " ", 1)
+	judulbuku = strings.TrimSpace(judulbuku)
+	fmt.Println(judulbuku)
 
 	fmt.Println("Tambah Pengarang Buku")
 	fmt.Print("Silahkan Tambah List Buku :")
-	pengarang, err = inputUser.ReadString('\n')
+	pengarang, err := inputUser.ReadString('\n')
 	if err != nil {
 		fmt.Println("Error: ", err)
 		return
 	}
-	pengarang = strings.Replace(pengarang, "\n", " ", 1)
+	pengarang = strings.TrimSpace(pengarang)
 
 	fmt.Println("Tambah nama penerbit")
 	fmt.Print("Silahkan Tambah List Buku :")
-	penerbit, err = inputUser.ReadString('\n')
+	penerbit, err := inputUser.ReadString('\n')
 	if err != nil {
 		fmt.Println("Error: ", err)
 		return
 	}
-	penerbit = strings.Replace(penerbit, "\n", " ", 1)
+	penerbit = strings.TrimSpace(penerbit)
 
 	fmt.Println("Tambah Jumlah Halaman")
 	fmt.Print("Silahkan Tambah List Buku :")
-	_, err = fmt.Scanln(&jumlahhalaman)
+	_, err = fmt.Fscanf(inputUser, "%d\n", &jumlahhalaman)
 	if err != nil {
 		fmt.Println("Error: ", err)
 		return
@@ -63,7 +63,7 @@ func TambahBuku() {
 
 	fmt.Println("Tambah tahun terbit")
 	fmt.Print("Silahkan Tambah List Buku :")
-	_, err = fmt.Scanln(&tahunterbit)
+	_, err = fmt.Fscanf(inputUser, "%d\n", &tahunterbit)
 	if err != nil {
 		fmt.Println("Error: ", err)
 		return
