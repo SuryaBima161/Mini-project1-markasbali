@@ -9,11 +9,11 @@ import (
 )
 
 var listBook []models.DaftarBuku
+var inputUser = bufio.NewReader(os.Stdin)
 
 func TambahBuku() {
 	jumlahhalaman := 0
 	tahunterbit := 0
-	inputUser := bufio.NewReader(os.Stdin)
 
 	fmt.Println("Tambah Kode Buku")
 	fmt.Print("Silahkan Tambah List Buku :")
@@ -23,7 +23,6 @@ func TambahBuku() {
 		return
 	}
 	kodebuku = strings.TrimSpace(kodebuku)
-	fmt.Println(kodebuku)
 
 	fmt.Println("Tambah Judul Buku")
 	fmt.Print("Silahkan Tambah List Buku :")
@@ -33,7 +32,6 @@ func TambahBuku() {
 		return
 	}
 	judulbuku = strings.TrimSpace(judulbuku)
-	fmt.Println(judulbuku)
 
 	fmt.Println("Tambah Pengarang Buku")
 	fmt.Print("Silahkan Tambah List Buku :")

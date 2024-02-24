@@ -4,10 +4,12 @@ import (
 	"fmt"
 )
 
+var kode string
+
 func DeleteBuku() {
-	var kode string
+
 	fmt.Println("=================================")
-	fmt.Println("Hapus Pesanan")
+	fmt.Println("Delete Buku")
 	fmt.Println("=================================")
 	ListBuku()
 	fmt.Println("=================================")
@@ -20,11 +22,13 @@ func DeleteBuku() {
 	for i, buku := range listBook {
 		if buku.Kode_Buku == kode {
 			index = i
+			fmt.Println("Buku dengan Kode : ", buku.Kode_Buku, " dengan judul : ", buku.Judul_Buku)
+			break
 		}
 	}
 	if index != -1 {
 		listBook = append(listBook[:index], listBook[index+1:]...)
-		fmt.Println("Buku dengan Kode :", kode, " Berhasil di hapus")
+		fmt.Println("Berhasil Dihapus")
 	} else {
 		fmt.Println("Buku tidak ditemukan")
 	}
