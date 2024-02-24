@@ -1,10 +1,9 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
+	"miniproject1/usecase"
 	"os"
-	"strings"
 )
 
 type DaftarBuku struct {
@@ -12,52 +11,8 @@ type DaftarBuku struct {
 	Judul_Buku     string
 	Pengarang      string
 	Penerbit       string
-	Jumlah_Halaman string
-	Tahun_Terbit   string
-}
-
-var listOrder []DaftarBuku
-
-func TambahBuku() {
-	judulbuku := ""
-	pengarang := ""
-	// penerbit := ""
-	// jumlahhalaman := 0
-	// tahunterbit := 0
-	inputUser := bufio.NewReader(os.Stdin)
-	fmt.Println("Tambah Kode Buku")
-	fmt.Print("Silahkan Tambah List Buku :")
-	// bufio.NewReader()
-	kodebuku, err := inputUser.ReadString('\n')
-	// _, err := fmt.Scanln(&order)
-	if err != nil {
-		fmt.Println("Error: ", err)
-		return
-	}
-	kodebuku = strings.Replace(kodebuku, "\n", " ", 1)
-
-	fmt.Println("Add table order")
-	fmt.Print("Please add your table order :")
-
-	_, err = fmt.Scanln(&judulbuku)
-	if err != nil {
-		fmt.Println("Error: ", err)
-		return
-	}
-
-	fmt.Println("Add total order")
-	fmt.Print("Please add your total order :")
-	_, err = fmt.Scanln(&pengarang)
-	if err != nil {
-		fmt.Println("Error: ", err)
-		return
-	}
-	listOrder = append(listOrder, DaftarBuku{
-		Kode_Buku:  kodebuku,
-		Judul_Buku: judulbuku,
-		Pengarang:  pengarang,
-	})
-	fmt.Println("Order Successful ")
+	Jumlah_Halaman int
+	Tahun_Terbit   int
 }
 
 func listBuku() {
@@ -72,6 +27,34 @@ func deleteBuku() {
 }
 
 func main() {
+
+	chooseOrder := 0
+	fmt.Println("Order Food System")
+	fmt.Println("================================================")
+	fmt.Println("choose your order :")
+	fmt.Println("1. tambah buku")
+	fmt.Println("2. view order")
+	fmt.Println("3. delete order")
+	fmt.Println("4. Out System")
+	fmt.Println("Enter your order")
+	_, err := fmt.Scanln(&chooseOrder)
+
+	if err != nil {
+		fmt.Println("error: ", err)
+	}
+
+	if chooseOrder == 1 {
+		usecase.TambahBuku()
+	} else if chooseOrder == 2 {
+		editBuku()
+	} else if chooseOrder == 3 {
+		deleteBuku()
+	} else if chooseOrder == 4 {
+		listBuku()
+	} else if chooseOrder == 5 {
+		os.Exit(0)
+	}
+	main()
 
 	fmt.Println("Hello Bang")
 }
