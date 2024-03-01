@@ -75,5 +75,5 @@ func TambahBuku() {
 		Jumlah_Halaman: jumlahhalaman,
 		Tahun_Terbit:   tahunterbit,
 	})
-	fmt.Println("Order Successful ")
+	fmt.Println("Tambah Buku Berhasil ")
 }

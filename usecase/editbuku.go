@@ -30,8 +30,16 @@ func EditBuku() {
 		return
 	}
 
-	var judulBaru, pengarangBaru, penerbitBaru string
+	var kodeBaru, judulBaru, pengarangBaru, penerbitBaru string
 	var jumlahHalamanBaru, tahunterbitBaru int
+
+	fmt.Print("Kode Buku Baru: ")
+	kodeBaru, err = inputUser.ReadString('\n')
+	if err != nil {
+		fmt.Println("Error: ", err)
+		return
+	}
+	kodeBaru = strings.TrimSpace(kodeBaru)
 
 	fmt.Print("Judul Baru: ")
 	judulBaru, err = inputUser.ReadString('\n')
@@ -71,6 +79,7 @@ func EditBuku() {
 		return
 	}
 
+	listBook[index].Kode_Buku = kodeBaru
 	listBook[index].Judul_Buku = judulBaru
 	listBook[index].Pengarang = pengarangBaru
 	listBook[index].Penerbit = penerbitBaru
