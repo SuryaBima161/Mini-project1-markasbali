@@ -36,6 +36,4 @@ func main() {
 		os.Exit(0)
 	}
 	main()
-
-	fmt.Println("Hello Bang")
 }
